@@ -1,6 +1,28 @@
 {
+  "version": "0.0.1",
+  "files": [
+    "client/**/*.d.ts",
+    "doctype/**/*.d.ts"
+  ],
+  "keywords": [
+    "frappe",
+    "typescript",
+    "types",
+    "anygridtech"
+  ],
+  "author": "AnyGrid Tech",
+  "license": "MIT",
+  "name": "frappe-agt-types",
   "dependencies": {
-    "@anygridtech/frappe-types": "^2.0.0"
+    "@anygridtech/frappe-types": "^2.0.2"
   },
-  "version": "0.0.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnyGridTech/frappe-agt-types.git"
+  },
+  "bugs": {
+    "url": "https://github.com/AnyGridTech/frappe-agt-types/issues"
+  },
+  "homepage": "https://github.com/AnyGridTech/frappe-agt-types#readme",
+  "description": ""
 }
