@@ -1,6 +1,5 @@
 import { FrappeDoc, FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 import { ChecklistTable } from "../../doctype/ChecklistTable";
-
 export interface ClientUtilsTable {
   row: {
     /**

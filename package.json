@@ -13,9 +13,6 @@
   "author": "AnyGrid Tech",
   "license": "MIT",
   "name": "frappe-agt-types",
-  "dependencies": {
-    "@anygridtech/frappe-types": "^2.0.2"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AnyGridTech/frappe-agt-types.git"
@@ -24,5 +21,8 @@
     "url": "https://github.com/AnyGridTech/frappe-agt-types/issues"
   },
   "homepage": "https://github.com/AnyGridTech/frappe-agt-types#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@anygridtech/frappe-types": "^2.0.4"
+  }
 }
