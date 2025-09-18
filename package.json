@@ -12,7 +12,7 @@
   ],
   "author": "AnyGrid Tech",
   "license": "MIT",
-  "name": "frappe-agt-types",
+  "name": "@anygridtech/frappe-agt-types",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/AnyGridTech/frappe-agt-types.git"
