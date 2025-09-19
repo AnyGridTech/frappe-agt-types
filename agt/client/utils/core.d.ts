@@ -5,39 +5,6 @@ import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
  */
 export interface ClientUtilsExtendedFunctions {
   /**
-   * Normalize text for tolerant search (removes accents, spaces, hyphens, special characters, case-insensitive)
-   */
-  normalize_text: (text: string) => string;
-
-  /**
-   * Checks if a given value is valid.
-   * - Returns `true` if the value is non-null, non-undefined, and (if a string) not empty after trimming.
-   * 
-   * @param v - The value to validate.
-   * @returns `true` if valid, otherwise `false`.
-   */
-  is_valid: (v: any) => boolean;
-
-  /**
-   * Converts a string to snake_case format.
-   * 
-   * @param str - The string to convert.
-   * @returns The converted string in snake_case format.
-   */
-  to_snake_case: (str: string) => string;
-
-  /**
-   * 
-   * @param str - The string to convert.
-   * @returns The Converted string in Pascal Case Spaced.
-   * @example "kebab-case-text" -> "Kebab Case Text"
-   * @example "snake_case_text" -> "Snake Case Text"
-   * @example "camelCaseText" -> "Camel Case Text"
-   * @example "PascalCaseText" -> "Pascal Case Text"
-   */
-  to_pascal_case_spaced: (str: string) => string;
-
-  /**
    * Handles workflow transitions for a form.
    * Executes the specified action and triggers related workflow events (`before_workflow_action`, `after_workflow_action`).
    * 
@@ -50,7 +17,7 @@ export interface ClientUtilsExtendedFunctions {
     form: FrappeForm,
     action: string,
     callback?: (f: FrappeForm) => void | Promise<void>
-  ) => Promise<void>;
+  ) => Promise<void>; // agt.utils.workflow_transition
 
   /**
    * Updates the workflow state for a document.
@@ -70,24 +37,7 @@ export interface ClientUtilsExtendedFunctions {
     workflow_state: string;
     ignore_workflow_validation?: boolean;
     callback?: () => Promise<void>;
-  }) => Promise<T | undefined>;
-
-  // fieldname: Map<Doctype, {filters: Record<field, value}, fields: campos_a_retornar[]>
-  /**
-   * Filters and joins data based on the specified steps.
-   * @param steps - Steps to perform the join operation
-   * @returns A promise resolving to the joined data
-   */
-  filterJoin: <Steps extends readonly JoinStep[]>(
-    steps: Steps
-  ) => Promise<
-    Steps extends [...any, infer Last]
-    ? Last extends JoinStep<infer T>
-    ? T[]
-    : any[]
-    : any[]
-  >;
-
+  }) => Promise<T | undefined>; // agt.utils.update_workflow_state
 
   /**
    * Displays a message to the user and redirects to a URL after a specified delay.
@@ -100,15 +50,6 @@ export interface ClientUtilsExtendedFunctions {
    * @param delay - Wait time in ms before redirection (default: 3000ms)
    * @param newTab - Whether to open in a new tab (default: true)
    */
-  redirect_by_ref(ref?: string, title?: string, message?: string, indicator?: string, url?: string, delay?: number, newTab?: boolean): void;
+  redirect_by_ref(ref?: string, title?: string, message?: string, indicator?: string, url?: string, delay?: number, newTab?: boolean): void; // agt.utils.redirect_by_ref
 }
 
-type JoinStep<T = any> = {
-  doctype: string;
-  filters: Record<string, any>;
-  fields: (keyof T)[];
-  joinOn?: {
-    sourceField: keyof T;
-    targetField: string;
-  };
-};

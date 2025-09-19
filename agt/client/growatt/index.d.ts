@@ -1,19 +1,19 @@
-import { GrowattApiResponse } from "../server/growatt_oss_api";
+import { GrowattApiResponse } from "../../server/growatt_oss_api";
 import { Item } from "@anygridtech/frappe-types/doctype/erpnext/Item"
 
 export interface ClientGrowatt {
   /**
    * Regular expression to validate any Growatt device.
    */
-  sn_regex: RegExp;
+  sn_regex: RegExp; // agt.growatt.sn_regex
   /**
    * Regular expression to validate Growatt inverters and dataloggers (Shine).
    */
-  iv_sn_regex: RegExp;
+  iv_sn_regex: RegExp; // agt.growatt.iv_sn_regex
   /**
    * Regular expression to validate other Growatt devices (e.g., batteries, EV chargers).
    */
-  other_sn_regex: RegExp;
+  other_sn_regex: RegExp; // agt.growatt.other_sn_regex
   /**
    * Validates a Growatt serial number based on its type.
    * @param sn - The serial number to validate.
