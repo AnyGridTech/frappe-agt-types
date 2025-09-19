@@ -5,6 +5,7 @@ import type { ClientUi } from "./ui";
 import type { ClientChecklist } from "./checklist";
 import type { ClientDb } from "./utils/db";
 import type { ClientUtilsText } from "./utils/text";
+import type { ClientDoctypeNamespace } from "./doctype_namespace";
 
 declare global {
   const agt: {
@@ -16,6 +17,7 @@ declare global {
     db: ClientDb;
     text: ClientUtilsText;
     checklist: ClientChecklist;
+    doctype_namespace: ClientDoctypeNamespace;
   };
 }
 
