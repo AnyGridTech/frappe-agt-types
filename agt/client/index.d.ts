@@ -8,6 +8,7 @@ import type { ClientUtilsText } from "./utils/text";
 
 declare global {
   const agt: {
+    setup: GeneralSetup;
     src_frm: FrappeForm | undefined;
     utils: ClientUtils;
     growatt: ClientGrowatt;
@@ -16,4 +17,20 @@ declare global {
     text: ClientUtilsText;
     checklist: ClientChecklist;
   };
+}
+
+type GeneralSetup = {
+  /**
+   * Sets up the custom integrations for the source form it is used in.
+   * It will setup once:
+   * - Corrections tracker
+   * - Checklist tables
+   * It will setup every time the event is triggered:
+   * - before_workflow_action: Workflow validate
+   * - before_workflow_action: Workflow preaction
+   * - refresh: Load history field.
+   * - after_save: Workflow validate ("Save")
+   * - onload: Workflow validate ("Load")
+   */
+  run: () => Promise<void>;
 }
