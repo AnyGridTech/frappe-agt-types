@@ -126,7 +126,7 @@ npx tsc --init
     "module": "ES2020",
     "target": "ES2020",
     "moduleResolution": "Node10",
-    "verbatimModuleSyntax": true,
+    "verbatimModuleSyntax": false,
     "types": [
       "jquery",
       "@anygridtech/frappe-agt-types",
