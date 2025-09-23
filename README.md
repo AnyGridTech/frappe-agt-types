@@ -185,21 +185,19 @@ your_custom_app/
 After setup, you can use the custom DocType and namespace types with full TypeScript support in your client scripts:
 
 ```ts
-// Example: Accessing a custom field in a Corrections Tracker form
-import { CorrectionsTracker } from '@anygridtech/frappe-agt-types';
+// Example: strong-typed form script while using metadata constants 
+
+import { CorrectionsTracker } from "@anygridtech/frappe-agt-types/agt/doctype/CorrectionsTracker";
+
+const status_options = agt.metadata.doctype.corrections_tracker.status;
 
 frappe.ui.form.on<CorrectionsTracker>('Corrections Tracker', {
   refresh(frm) {
-    // frm.doc is now strongly-typed as CorrectionsTracker
-    if (frm.doc.custom_status === 'Pending') {
-      // Autocomplete works for custom fields!
-      frm.set_intro("This record needs review.");
+    if (frm.doc.status === status_options.PENDING) {
+      // ...
     }
   }
 });
-
-// Example: Calling a custom client utility
-agt.client.utils.doc.get_linked_doc('Ticket', 'TICKET-001', 'Service Protocol');
 ```
 
 ---
