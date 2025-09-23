@@ -1,8 +1,9 @@
 {
   "version": "1.3.0",
   "files": [
-    "client/**/*.d.ts",
-    "doctype/**/*.d.ts"
+    "agt/client/**/*.d.ts",
+    "agt/doctype/**/*.d.ts",
+    "agt/server/**/*.d.ts"
   ],
   "keywords": [
     "frappe",
