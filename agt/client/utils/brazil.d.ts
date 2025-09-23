@@ -10,18 +10,20 @@ export interface Brazil {
      * @returns `true` if the CPF number is valid, otherwise `false`.
      */
     regex: RegExp; // agt.utils.brazil.cpf.regex
+    
     /**
      * Formats a CPF number field to the standard format (xxx.xxx.xxx-xx).
-     * @param value - The CPF number to format.
-     * @returns The formatted CPF number.
+     * @param frm - The Frappe form instance
+     * @param cpf_field - The field containing the CPF number
      */
-    format: (value: string) => void; // agt.utils.brazil.cpf.format
+    format: (frm: FrappeForm, cpf_field: string) => void; // agt.utils.brazil.cpf.format
+    
     /**
      * Validates a CPF number.
-     * @param value - The CPF number to validate.
-     * @returns `true` if the CPF number is valid, otherwise `false`.
+     * @param frm - The Frappe form instance
+     * @param cpf_field - The field containing the CPF number
      */
-    validate: (value: string) => boolean; // agt.utils.brazil.cpf.validate
+    validate: (frm: FrappeForm, cpf_field: string) => void; // agt.utils.brazil.cpf.validate
   }
 
   /**
@@ -29,28 +31,31 @@ export interface Brazil {
    */
   cnpj: {
     /**
-     * Regular Expression a CNPJ number.
-     * @returns `true` if the CNPJ number is valid, otherwise `false`.
+     * Regular Expression for a CNPJ number.
      */
-    regex: RegExp; // agt.utils.brazil.cnpj.regex
+    regex: RegExp;
+
     /**
      * Formats a CNPJ number field to the standard format (xx.xxx.xxx/xxxx-xx).
-     * @param value - The CNPJ number to format.
-     * @returns The formatted CNPJ number.
+     * @param frm - The Frappe form instance
+     * @param cnpj_field - The field containing the CNPJ number
      */
-    format: (value: string) => void; // agt.utils.brazil.cnpj.format
+    format: (frm: FrappeForm, cnpj_field: string) => void; // agt.utils.brazil.cnpj.format
+    
     /**
      * Validates a CNPJ number.
-     * @param value - The CNPJ number to validate.
+     * @param frm - The Frappe form instance
+     * @param cnpj_field - The field containing the CNPJ number
      * @returns `true` if the CNPJ number is valid, otherwise `false`.
      */
-    validate: (value: string) => boolean; // agt.utils.brazil.cnpj.validate
+    validate: (frm: FrappeForm, cnpj_field: string) => void; // agt.utils.brazil.cnpj.validate
+    
     /**
      * Checks if a CNPJ exists by making an API call to validate it.
-     * @param cnpj - The CNPJ number to validate
-     * @returns A promise that resolves to true if the CNPJ exists, false otherwise
+     * @param frm - The Frappe form instance
+     * @param cnpj_field - The field containing the CNPJ number
      */
-    validate_existence: (cnpj: string) => Promise<boolean>; // agt.utils.brazil.cnpj.validate_existence
+    validate_existence: (frm: FrappeForm, cnpj_field: string) => Promise<void>; // agt.utils.brazil.cnpj.validate_existence
   }
 
   /**
@@ -61,22 +66,22 @@ export interface Brazil {
      * Regular Expression to validate Brazilian phone numbers.
      */
     regex: RegExp; // agt.utils.brazil.phone.regex
+
     /**
      * Formats a phone number field to a standard format.
-     * @param value - The phone number to format.
-     * @param fieldName - The field name containing the phone number.
-     * @returns The formatted phone number.
+     * @param frm - The Frappe form instance.
+     * @param phone_field - The field containing the phone number.
      */
-    format: (value: string) => void; // agt.utils.brazil.phone.format
+    format: (frm: FrappeForm, phone_field: string) => void; // agt.utils.brazil.phone.format
 
     /**
      * Validates and formats phone numbers with international codes (DDI).
      * Applies real-time masking and formatting based on country standards.
      * 
      * @param frm - The Frappe form containing the phone field
-     * @param phoneFieldName - The name of the field containing the phone number
-     * @param ddiFieldName - Optional. The name of the field containing the DDI code
-     * @param countryFieldName - Optional. The name of the field containing the country
+     * @param phone_field - The name of the field containing the phone number
+     * @param ddi_field - Optional. The name of the field containing the DDI code
+     * @param country_field - Optional. The name of the field containing the country
      * 
      * @example
      * // Basic usage with just the phone field
@@ -88,7 +93,7 @@ export interface Brazil {
      * // Full usage with country field that will auto-set the DDI
      * agt.utils.brazil.phone.validate(frm, 'phone_field', 'ddi_code_field', 'country_field');
      */
-    validate: (frm: FrappeForm, phoneFieldName: string, ddiFieldName?: string, countryFieldName?: string) => Promise<void>; // agt.utils.brazil.phone.validate TODO: Conversar com Marco para ver como refazer essa função pq atualmente ela tem muitas responsabilidades.
+    validate: (frm: FrappeForm, phone_field: string, ddi_field?: string, country_field?: string) => Promise<void>; // agt.utils.brazil.phone.validate TODO: Conversar com Marco para ver como refazer essa função pq atualmente ela tem muitas responsabilidades.
   }
 
   /**
@@ -99,33 +104,42 @@ export interface Brazil {
      * Regular Expression to validate Brazilian ZIP codes (CEP).
      */
     regex: RegExp; // agt.utils.brazil.cep.regex
+
+    /**
+     * Formats a Brazilian ZIP code (CEP) to the standard format (xxxxx-xxx).
+     * @param frm - The Frappe form instance
+     * @param cep_field - The field containing the ZIP code
+     * @returns The formatted ZIP code.
+     */
+    format: (frm: FrappeForm, cep_field: string) => string; // agt.utils.brazil.cep.format
+
     /**
      * Validates a Brazilian ZIP code (CEP) and auto-fills address fields.
      * Makes an API call to check the ZIP code and update related fields.
      * @param frm - The Frappe form instance
-     * @param field - The field containing the ZIP code
-     * @param addr - The field to store the address
-     * @param neigh - The field to store the neighborhood
-     * @param town - The field to store the city
-     * @param state - The field to store the state
+     * @param cep_field - The field containing the ZIP code
+     * @param addr_field - The field to store the address
+     * @param neighborhood_field - The field to store the neighborhood
+     * @param town_field - The field to store the city
+     * @param state_field - The field to store the state_field
      */
-    validate: (frm: FrappeForm, field: string, addr: string, neigh: string, town: string, state: string) => Promise<void>; // agt.utils.brazil.cep.validate
+    validate: (frm: FrappeForm, cep_field: string, addr_field: string, neighborhood_field: string, town_field: string, state_field: string) => Promise<void>; // agt.utils.brazil.cep.validate
   }
 
   /**
    * Sets up document ID validation and formatting on a form.
    * Handles both CPF and CNPJ validation depending on the type field.
    * @param frm - The Frappe form instance
-   * @param fieldName - The field name containing the document ID
+   * @param field - The field name containing the document ID
    * @param documentType - The field name containing the document type (CPF/CNPJ)
    */
-  validate_cnpj_or_cpf: (frm: FrappeForm, fieldName: string, documentType: 'cpf' | 'cnpj') => void; // agt.utils.brazil.validate_cnpj_or_cpf
+  validate_cnpj_or_cpf: (frm: FrappeForm, field: string, documentType: 'cpf' | 'cnpj') => void; // agt.utils.brazil.validate_cnpj_or_cpf
 
   /**
    * Formats a Brazilian document ID (CPF/CNPJ) on a form.
    * @param frm - The Frappe form instance
-   * @param fieldName - The field name containing the document ID
+   * @param field - The field name containing the document ID
    * @param documentType - The type of document ('cpf' or 'cnpj')
    */
-  format_cnpj_or_cpf: (frm: FrappeForm, fieldName: string, documentType: 'cpf' | 'cnpj') => void; // agt.utils.brazil.format_cnpj_or_cpf
+  format_cnpj_or_cpf: (frm: FrappeForm, field: string, documentType: 'cpf' | 'cnpj') => void; // agt.utils.brazil.format_cnpj_or_cpf
 }
