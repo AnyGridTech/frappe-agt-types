@@ -13,7 +13,7 @@ export interface Db {
    * const result = await agt.utils.filterJoin(steps);
    * ```
    */
-  filterJoin: <Steps extends readonly JoinStep[]>(
+  filter_join: <Steps extends readonly JoinStep[]>(
     steps: Steps
   ) => Promise<
     Steps extends [...any, infer Last]
