@@ -13,10 +13,9 @@ export interface Brazil {
     /**
      * Formats a CPF number field to the standard format (xxx.xxx.xxx-xx).
      * @param value - The CPF number to format.
-     * @param fieldName - The field name containing the CPF number.
      * @returns The formatted CPF number.
      */
-    format: (value: string, fieldName: string) => void; // agt.utils.brazil.cpf.format
+    format: (value: string) => void; // agt.utils.brazil.cpf.format
     /**
      * Validates a CPF number.
      * @param value - The CPF number to validate.
@@ -37,10 +36,9 @@ export interface Brazil {
     /**
      * Formats a CNPJ number field to the standard format (xx.xxx.xxx/xxxx-xx).
      * @param value - The CNPJ number to format.
-     * @param fieldName - The field name containing the CNPJ number.
      * @returns The formatted CNPJ number.
      */
-    format: (value: string, fieldName: string) => void; // agt.utils.brazil.cnpj.format
+    format: (value: string) => void; // agt.utils.brazil.cnpj.format
     /**
      * Validates a CNPJ number.
      * @param value - The CNPJ number to validate.
@@ -69,7 +67,7 @@ export interface Brazil {
      * @param fieldName - The field name containing the phone number.
      * @returns The formatted phone number.
      */
-    format: (value: string, fieldName: string) => void; // agt.utils.brazil.phone.format
+    format: (value: string) => void; // agt.utils.brazil.phone.format
 
     /**
      * Validates and formats phone numbers with international codes (DDI).
@@ -90,7 +88,7 @@ export interface Brazil {
      * // Full usage with country field that will auto-set the DDI
      * agt.utils.brazil.phone.validate(frm, 'phone_field', 'ddi_code_field', 'country_field');
      */
-    validate: (frm: FrappeForm, phoneFieldName: string, ddiFieldName?: string, countryFieldName?: string) => Promise<void>; // agt.utils.brazil.phone.validate
+    validate: (frm: FrappeForm, phoneFieldName: string, ddiFieldName?: string, countryFieldName?: string) => Promise<void>; // agt.utils.brazil.phone.validate TODO: Conversar com Marco para ver como refazer essa função pq atualmente ela tem muitas responsabilidades.
   }
 
   /**
