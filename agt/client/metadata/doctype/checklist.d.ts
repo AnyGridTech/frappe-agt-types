@@ -1,4 +1,4 @@
-import type { WorkflowState } from "./utils/workflow_state";
+import type { WorkflowState } from "../utils/workflow_state";
 
 export interface Checklist {
   workflow_state: {

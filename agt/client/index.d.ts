@@ -5,7 +5,7 @@ import type { Ui } from "./ui";
 import type { Checklist } from "./checklist";
 import type { Db } from "./utils/db";
 import type { Text } from "./utils/text";
-import type { DoctypeNamespace } from "./doctype_namespace";
+import type { DoctypeNamespace } from "./metadata/doctype";
 
 declare global {
   const agt: {

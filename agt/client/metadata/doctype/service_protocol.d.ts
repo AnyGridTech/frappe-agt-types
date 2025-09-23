@@ -1,5 +1,5 @@
-import type { WorkflowAction } from "./utils/workflow_action";
-import type { WorkflowState } from "./utils/workflow_state";
+import type { WorkflowAction } from "../utils/workflow_action";
+import type { WorkflowState } from "../utils/workflow_state";
 
 export interface ServiceProtocol {
   workflow_action: {

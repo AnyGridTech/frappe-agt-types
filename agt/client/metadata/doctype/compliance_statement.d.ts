@@ -1,4 +1,4 @@
-import type { WorkflowAction } from "./utils/workflow_action";
+import type { WorkflowAction } from "../utils/workflow_action";
 
 export interface ComplianceStatement {
   workflow_action: {

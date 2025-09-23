@@ -1,8 +1,8 @@
 import type { Checklist } from "./checklist";
 import type { ComplianceStatement } from "./compliance_statement";
 import type { CorrectionsTracker } from "./corrections_tracker";
-import type { ServiceProtocol } from "./service_protocol";
-import type { Ticket } from "./ticket";
+import type { ServiceProtocol } from "../service_protocol";
+import type { Ticket } from "../ticket";
 
 export interface DoctypeNamespace {
   corrections_tracker: CorrectionsTracker; // agr.doctype_namespace.corrections_tracker
