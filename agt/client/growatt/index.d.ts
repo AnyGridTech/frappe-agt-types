@@ -1,7 +1,7 @@
 import { GrowattApiResponse } from "../../server/growatt_oss_api";
 import { Item } from "@anygridtech/frappe-types/doctype/erpnext/Item"
 
-export interface ClientGrowatt {
+export interface Growatt {
   /**
    * Regular expression to validate any Growatt device.
    */

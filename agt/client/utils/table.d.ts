@@ -1,6 +1,6 @@
 import { FrappeDoc, FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 import { ChecklistTable } from "../../doctype/ChecklistTable";
-export interface ClientUtilsTable {
+export interface Table {
   row: {
     /**
      * Adds a new row to a child table within a form.

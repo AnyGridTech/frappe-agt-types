@@ -1,4 +1,4 @@
-export interface ClientChecklistTable {
+export interface ChecklistTable {
   /**
    * Sets up the Checklist Tracker custom integrations for all tables supported by the doctype.
    */

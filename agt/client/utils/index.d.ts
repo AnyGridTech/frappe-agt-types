@@ -1,14 +1,14 @@
-import type { ClientUtilsBrazil } from "./brazil";
-import type { ClientUtilsExtendedFunctions } from "./core";
-import type { ClientUtilsDialog } from "./dialog";
-import type { ClientUtilsDoc } from "./doc";
-import type { ClientUtilsForm } from "./form";
-import type { ClientUtilsTable } from "./table";
+import type { Brazil } from "./brazil";
+import type { UtilsExtendedFunctions } from "./core";
+import type { Dialog } from "./dialog";
+import type { Doc } from "./doc";
+import type { Form } from "./form";
+import type { Table } from "./table";
 
-export interface ClientUtils extends ClientUtilsExtendedFunctions {
-  brazil: ClientUtilsBrazil;
-  dialog: ClientUtilsDialog;
-  doc: ClientUtilsDoc;
-  form: ClientUtilsForm;
-  table: ClientUtilsTable;
+export interface Utils extends UtilsExtendedFunctions {
+  brazil: Brazil;
+  dialog: Dialog;
+  doc: Doc;
+  form: Form;
+  table: Table;
 }

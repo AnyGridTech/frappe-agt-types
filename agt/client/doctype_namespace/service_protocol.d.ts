@@ -1,7 +1,7 @@
 import type { WorkflowAction } from "./utils/workflow_action";
 import type { WorkflowState } from "./utils/workflow_state";
 
-export interface ClientDoctypeNamespaceServiceProtocol {
+export interface ServiceProtocol {
   workflow_action: {
     approve: WorkflowAction;
     request_analysis: WorkflowAction;

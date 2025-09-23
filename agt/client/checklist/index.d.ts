@@ -1,15 +1,15 @@
-import type { ClientChecklistTable } from "./table";
+import type { ChecklistTable } from "./table";
 
-export interface ClientChecklist {
+export interface Checklist {
   /**
    * Randy checklist table functions to be used in other doctypes.
    */
-  table: ClientChecklistTable; // agt.checklist.table
+  table: ChecklistTable; // agt.checklist.table
 
   /**
    * Child tracker table functions for checklists.
    */
-  tracker_table: ClientChecklistTable; // agt.checklist.tracker_table
+  tracker_table: ChecklistTable; // agt.checklist.tracker_table
 
   /**
    * Sets up a checklist.

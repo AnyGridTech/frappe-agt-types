@@ -1,7 +1,7 @@
 import type { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 import type { WorkflowActionExtended } from "./before_workflow_action";
 
-export interface ClientWorkflow {
+export interface Workflow {
   /**
    * Validates the workflow for the given form.
    * 

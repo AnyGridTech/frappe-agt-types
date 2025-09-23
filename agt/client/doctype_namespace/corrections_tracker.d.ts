@@ -1,4 +1,4 @@
-export interface ClientDoctypeNamespaceCorrectionsTracker {
+export interface CorrectionsTracker {
   status: {
     PENDING: string;
     REVIEW: string;

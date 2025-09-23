@@ -1,7 +1,7 @@
 import type { WorkflowAction } from "./utils/workflow_action";
 import type { WorkflowState } from "./utils/workflow_state";
 
-export interface ClientDoctypeNamespaceTicket {
+export interface Ticket {
   workflow_action: {
     approve: WorkflowAction;
     finish: WorkflowAction;

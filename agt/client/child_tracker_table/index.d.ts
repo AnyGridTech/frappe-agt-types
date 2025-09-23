@@ -1,6 +1,6 @@
 import type { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface ClientChildTrackerTable {
+export interface ChildTrackerTable {
   /**
    * Mirrors the child tracker table for the given doctypes in the specified Frappe form.
    * It depends of the existence of the doctype "Child Tracker Table" with fields:

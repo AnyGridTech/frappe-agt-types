@@ -1,23 +1,23 @@
 import type { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
-import type { ClientGrowatt } from "./growatt";
-import type { ClientUtils } from "./utils";
-import type { ClientUi } from "./ui";
-import type { ClientChecklist } from "./checklist";
-import type { ClientDb } from "./utils/db";
-import type { ClientUtilsText } from "./utils/text";
-import type { ClientDoctypeNamespace } from "./doctype_namespace";
+import type { Growatt } from "./growatt";
+import type { Utils } from "./utils";
+import type { Ui } from "./ui";
+import type { Checklist } from "./checklist";
+import type { Db } from "./utils/db";
+import type { Text } from "./utils/text";
+import type { DoctypeNamespace } from "./doctype_namespace";
 
 declare global {
   const agt: {
     setup: GeneralSetup;
     src_frm: FrappeForm | undefined;
-    utils: ClientUtils;
-    growatt: ClientGrowatt;
-    ui: ClientUi;
-    db: ClientDb;
-    text: ClientUtilsText;
-    checklist: ClientChecklist;
-    doctype_namespace: ClientDoctypeNamespace;
+    utils: Utils;
+    growatt: Growatt;
+    ui: Ui;
+    db: Db;
+    text: Text;
+    checklist: Checklist;
+    doctype_namespace: DoctypeNamespace;
   };
 }
 

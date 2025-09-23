@@ -1,6 +1,6 @@
 import type { WorkflowAction } from "./utils/workflow_action";
 
-export interface ClientDoctypeNamespaceComplianceStatement {
+export interface ComplianceStatement {
   workflow_action: {
     approve: WorkflowAction;
     request_analysis: WorkflowAction;

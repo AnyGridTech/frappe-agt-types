@@ -1,7 +1,7 @@
 import { DocMeta } from "@anygridtech/frappe-types/client/frappe/core";
 import { UserShared } from "@anygridtech/frappe-types/client/frappe/model";
 
-export interface ClientUtilsDoc {
+export interface Doc {
   /**
    * Creates a new document in the specified DocType with the given fields.
    * Validates the fields based on the DocType metadata before creating the document.

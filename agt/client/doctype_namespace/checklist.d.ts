@@ -1,6 +1,6 @@
 import type { WorkflowState } from "./utils/workflow_state";
 
-export interface ClientDoctypeNamespaceChecklist {
+export interface Checklist {
   workflow_state: {
     pre_analysis: WorkflowState;
     customer_fix_info: WorkflowState;

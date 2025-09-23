@@ -3,7 +3,7 @@ import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 /**
  * Represents the custom utilities module in Frappe.
  */
-export interface ClientUtilsExtendedFunctions {
+export interface UtilsExtendedFunctions {
   /**
    * Handles workflow transitions for a form.
    * Executes the specified action and triggers related workflow events (`before_workflow_action`, `after_workflow_action`).

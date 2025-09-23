@@ -1,4 +1,4 @@
-export interface ClientDb {
+export interface Db {
   /**
    * Filters and joins data based on the specified steps.
    * @param steps - Steps to perform the join operation

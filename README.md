@@ -28,7 +28,6 @@ It extends <a href="https://github.com/AnyGridTech/frappe-types">@anygridtech/fr
 - [What’s Included?](#whats_included)
 - [Getting Started](#getting_started)
 - [Installation](#installation)
-- [Setup](#setup)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Authors](#authors)
@@ -83,51 +82,101 @@ These instructions will help you integrate the custom types into your Frappe Typ
 
 ### Prerequisites
 
-- A working Frappe development environment.
-- Your project must be configured for TypeScript and already use `@anygridtech/frappe-types`.
+- Firstly, you need a working Frappe development environment.
+> In case you're not familiar, we recommend using our [Frappe Custom Apps Development Environment](https://github.com/AnyGridTech/frappe-dev) for easier setup.
 
-```bash
-# Make sure you have TypeScript and the base Frappe types
-npm install typescript @anygridtech/frappe-types
-npx tsc --init
-```
+- After having your working Frappe development environment,
+you must create a new custom app or use an existing one. 
+> Our [Frappe Custom Apps Development Environment](https://github.com/AnyGridTech/frappe-dev) includes helper functions for quickly scaffolding apps using `create-app.sh` or `install-app.sh`.
 
 ---
 
 ## 📥 Installation <a name = "installation"></a>
 
-Install as a dev dependency alongside the base types:
+- Create a `ts` folder at `your_custom_app/your_custom_app/public/` to hold your TypeScript files.
+
+- Install Typescript and our package via your package manager of choice:
 
 ```bash
 # npm
-npm install @anygridtech/frappe-agt-types
+npm install typescript @anygridtech/frappe-agt-types
 
 # yarn
-yarn add @anygridtech/frappe-agt-types
+yarn add typescript @anygridtech/frappe-agt-types
 
 # pnpm
-pnpm add @anygridtech/frappe-agt-types
+pnpm add typescript @anygridtech/frappe-agt-types
 ```
 
----
+> Notice: `@anygridtech/frappe-types` is a dependency of this project. You do not need to install it separately to have access to `frappe` type definitions. Installing this package is sufficient to have type definitions for both `frappe` and `agt` globals.
 
-## ⚙️ Setup <a name = "setup"></a>
+- Initialize a new `tsconfig.json` for TypeScript.
 
-Add this package to your `tsconfig.json` to make the global types available across your project.
+```bash
+npx tsc --init
+```
+
+- Use the following `tsconfig.json` settings as a recommended base and customize it as needed:
 
 ```json
 {
   "compilerOptions": {
+    "rootDir": "./ts",
+    "outDir": "./js",
+    "module": "ES2020",
+    "target": "ES2020",
+    "moduleResolution": "Node10",
+    "verbatimModuleSyntax": true,
     "types": [
       "jquery",
-      "@anygridtech/frappe-types",
-      "@anygridtech/frappe-agt-types"
-    ]
-  }
+      "@anygridtech/frappe-agt-types",
+      "@anygridtech/frappe-types"
+    ],
+    "sourceMap": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noPropertyAccessFromIndexSignature": true,
+    "removeComments": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "isolatedModules": true,
+    "noUncheckedSideEffectImports": true,
+    "moduleDetection": "force",
+  },
+  "include": [
+    "ts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
 ```
 
-⚠️ Remember: when you define the `types` array, you must explicitly list all global type packages your project uses.
+> ⚠️ Remember: when you define the `types` array, you must explicitly list all global type packages your project uses. In the example above, we include `jquery` since Frappe's client scripts rely on it. But you may need to add more depending on your project's typing requirements.
+
+- Hit `Ctrl+Shift+P` in VSCode and select `Developer: Reload Window` to ensure the editor picks up the new types. Or just close and reopen VSCode. In case you're using another editor, you can also just close and reopen it.
+
+- Finally, your app folder structure should look similiar to this:
+
+```
+your_custom_app/
+├── your_custom_app/
+│   ├── public/
+|   |   ├── css/
+│   │   ├── js/
+│   │   ├── ts/
+│   │   ├── node_modules/
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   └── ...
+└── ...
+```
 
 ---
 

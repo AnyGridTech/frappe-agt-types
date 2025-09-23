@@ -1,6 +1,6 @@
 import { FieldDict, FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface ClientUtilsForm {
+export interface Form {
 
   /**
    * Everything related to form fields

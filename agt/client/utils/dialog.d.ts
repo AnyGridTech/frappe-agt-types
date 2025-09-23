@@ -1,7 +1,7 @@
 import { DialogInstance, DialogConfiguration } from "@anygridtech/frappe-types/client/frappe/ui/Dialog";
 import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface ClientUtilsDialog {
+export interface Dialog {
   /**
    * Stores all created dialog instances using `load_dialog` method.
    * Can be used to access or manipulate the dialog after its creation.

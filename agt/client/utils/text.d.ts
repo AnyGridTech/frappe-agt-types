@@ -1,4 +1,4 @@
-export interface ClientUtilsText {
+export interface Text {
   /**
    * Normalize text for tolerant search (removes accents, spaces, hyphens, special characters, case-insensitive)
    */

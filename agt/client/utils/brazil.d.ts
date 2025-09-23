@@ -1,6 +1,6 @@
 import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface ClientUtilsBrazil {
+export interface Brazil {
   /**
    * Everything related to CPF (Cadastro de Pessoas Físicas - Brazilian individual taxpayer registry identification)
    */
