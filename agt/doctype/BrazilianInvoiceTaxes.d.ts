@@ -1,6 +1,6 @@
 import type { FrappeDoc } from "@anygridtech/frappe-types/client/frappe/core";
 
-interface BrazilianInvoiceTaxes extends FrappeDoc {
+export interface BrazilianInvoiceTaxes extends FrappeDoc {
   is_system: number;
   main_base_calc: number;
   state_origin: string;
