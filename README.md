@@ -123,9 +123,11 @@ npx tsc --init
   "compilerOptions": {
     "rootDir": "./ts",
     "outDir": "./js",
-    "module": "ES2020",
-    "target": "ES2020",
-    "moduleResolution": "Node10",
+    "module": "preserve",
+    "target": "ESNext",
+    "esModuleInterop": false,
+    "importHelpers": false,
+    "noEmitHelpers": true,
     "verbatimModuleSyntax": false,
     "types": [
       "jquery",
@@ -142,7 +144,6 @@ npx tsc --init
     "noFallthroughCasesInSwitch": true,
     "noPropertyAccessFromIndexSignature": true,
     "removeComments": true,
-    "esModuleInterop": true,
     "strict": true,
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
@@ -153,7 +154,12 @@ npx tsc --init
   ],
   "exclude": [
     "node_modules"
-  ]
+  ],
+  "watchOptions": {
+    "watchFile": "fixedPollingInterval",
+    "watchDirectory": "fixedPollingInterval",
+    "fallbackPolling": "dynamicPriority"
+  }
 }
 ```
 
