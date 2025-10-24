@@ -110,62 +110,14 @@ pnpm add typescript @anygridtech/frappe-agt-types
 
 > Notice: `@anygridtech/frappe-types` is a dependency of this project. You do not need to install it separately to have access to `frappe` type definitions. Installing this package is sufficient to have type definitions for both `frappe` and `agt` globals.
 
-- Initialize a new `tsconfig.json` for TypeScript.
+This package is designed to work with `@anygridtech/frappe-ts-tools`. You must set up `frappe-ts-tools` first:
 
-```bash
-npx tsc --init
-```
+👉 **[Follow @anygridtech/frappe-ts-tools Setup Instructions](https://github.com/AnyGridTech/frappe-ts-tools#configuration)**
 
-- Use the following `tsconfig.json` settings as a recommended base and customize it as needed:
 
-```json
-{
-  "compilerOptions": {
-    "rootDir": "./ts",
-    "outDir": "./js",
-    "module": "preserve",
-    "target": "ESNext",
-    "esModuleInterop": false,
-    "importHelpers": false,
-    "noEmitHelpers": true,
-    "verbatimModuleSyntax": false,
-    "types": [
-      "jquery",
-      "@anygridtech/frappe-agt-types",
-      "@anygridtech/frappe-types"
-    ],
-    "sourceMap": true,
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noImplicitReturns": true,
-    "noImplicitOverride": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "removeComments": true,
-    "strict": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-  },
-  "include": [
-    "ts/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ],
-  "watchOptions": {
-    "watchFile": "fixedPollingInterval",
-    "watchDirectory": "fixedPollingInterval",
-    "fallbackPolling": "dynamicPriority"
-  }
-}
-```
+The `frappe-ts-tools` package handles all TypeScript compilation and build configuration automatically.
 
-> ⚠️ Remember: when you define the `types` array, you must explicitly list all global type packages your project uses. In the example above, we include `jquery` since Frappe's client scripts rely on it. But you may need to add more depending on your project's typing requirements.
-
-- Hit `Ctrl+Shift+P` in VSCode and select `Developer: Reload Window` to ensure the editor picks up the new types. Or just close and reopen VSCode. In case you're using another editor, you can also just close and reopen it.
+- Reload the TypeScript server to ensure the editor picks up the new types: Hit `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac) in VSCode and select `TypeScript: Restart TS Server`. For other editors, consult your editor's documentation on reloading the language server.
 
 - Finally, your app folder structure should look similiar to this:
 
