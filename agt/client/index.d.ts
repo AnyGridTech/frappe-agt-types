@@ -3,8 +3,6 @@ import type { Growatt } from "./growatt";
 import type { Utils } from "./utils";
 import type { Ui } from "./ui";
 import type { Checklist } from "./checklist";
-import type { Db } from "./utils/db";
-import type { Text } from "./utils/text";
 import type { Metadata } from "./metadata";
 import type { Workflow } from "./workflow";
 
@@ -15,8 +13,6 @@ declare global {
     utils: Utils;
     growatt: Growatt;
     ui: Ui;
-    db: Db;
-    text: Text;
     checklist: Checklist;
     metadata: Metadata;
     workflow: Workflow;
