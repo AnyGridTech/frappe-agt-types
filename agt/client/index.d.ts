@@ -6,6 +6,7 @@ import type { Checklist } from "./checklist";
 import type { Db } from "./utils/db";
 import type { Text } from "./utils/text";
 import type { Metadata } from "./metadata";
+import type { Workflow } from "./workflow";
 
 declare global {
   const agt: {
@@ -18,6 +19,7 @@ declare global {
     text: Text;
     checklist: Checklist;
     metadata: Metadata;
+    workflow: Workflow;
   };
 }
 
