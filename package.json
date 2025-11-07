@@ -1,5 +1,5 @@
 {
-  "version": "2.4.1",
+  "version": "2.4.2",
   "types": "agt/client/index.d.ts",
   "files": [
     "agt/client/**/*.d.ts",
