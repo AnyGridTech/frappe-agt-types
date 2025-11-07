@@ -13,7 +13,7 @@ export interface Doc {
    * @param fields_dict - A dictionary of field-value pairs for the new document.
    * @returns A promise resolving to the name of the created document, or `undefined` if creation fails.
    */
-  create_doc: (doctype: string, fields_target: string[], fields_dict: Record<string, any>) => Promise<string | undefined>;
+    create_doc: <T>(doctype: string, fields_target: Record<string, string>, fields_dict: Record<string, any>) => Promise<string | undefined>;
 
   /**
    * Updates an existing document with the specified fields.
