@@ -9,7 +9,7 @@ export type { ChecklistTracker } from "./ChecklistTracker";
 export type { ChecklistTransformer } from "./ChecklistTransformer";
 export type { Company } from "./Company";
 export type { CorrectionsChildList } from "./CorrectionsChildList";
-export type { CorrectionsTracker } from "./CorrectionsTracker";
+export type { CorrectionsTrackerDoc } from "./CorrectionsTracker";
 export type { InvoiceTaxes } from "./InvoiceTaxes";
 export type { IssueInverters } from "./IssueInverters";
 export type { Item } from "./Item";

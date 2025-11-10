@@ -1,9 +1,9 @@
 import type { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface ChildTrackerTable {
+export interface CorrectionsTrackerTable {
   /**
-   * Mirrors the child tracker table for the given doctypes in the specified Frappe form.
-   * It depends of the existence of the doctype "Child Tracker Table" with fields:
+   * Mirrors the corrections tracker table for the given doctypes in the specified Frappe form.
+   * It depends of the existence of the doctype "Corrections Tracker Table" with fields:
    * - child_tracker_docname: The name of the document.
    * - child_tracker_doctype: The name of the doctype.
    * - child_tracker_workflow_state: The current workflow state of the document.

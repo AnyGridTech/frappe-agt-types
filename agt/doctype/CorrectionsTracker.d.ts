@@ -1,6 +1,6 @@
 import type { FrappeDoc } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface CorrectionsTracker extends FrappeDoc {
+export interface CorrectionsTrackerDoc extends FrappeDoc {
   status: string;
   created_date: string;
   created_by: string;
