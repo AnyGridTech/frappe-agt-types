@@ -12,4 +12,5 @@ export interface Item extends FrappeDoc {
   valuation_rate?: number;
   default_warehouse?: string;
   custom_equipament_type?: string;
+  custom_mppt?: string;
 }
