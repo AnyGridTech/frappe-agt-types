@@ -1,4 +1,4 @@
-export interface CorrectionsTracker {
+export interface CorrectionsTracker{
   status: {
     PENDING: string;
     REVIEW: string;

@@ -12,11 +12,5 @@ export interface ChildTrackerTable {
    * @param doctypes - An array of doctype names whose child tracker tables should be mirrored.
    * @returns A promise that resolves when the operation is complete.
    */
-  mirror(frm: FrappeForm, doctypes: string[], field: string): Promise<void>; // agt.child_tracker_table.mirror
-
-  /**
-   * Sets up Child Tracker Table custom integrations.
-   * 
-   */
-  setup: () => Promise<void>; // agt.child_tracker_table.setup
+  mirror_child_tracker_table(frm: FrappeForm, doctypes: string[], field: string): Promise<void>; // agt.child_tracker_table.mirror
 }

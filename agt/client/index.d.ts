@@ -3,6 +3,7 @@ import type { Growatt } from "./growatt";
 import type { Utils } from "./utils";
 import type { Ui } from "./ui";
 import type { Checklist } from "./checklist";
+import type { CorrectionsTracker } from "./corrections_tracker/corrections_tracker";
 import type { ChildTrackerTable } from "./child_tracker_table";
 import type { Metadata } from "./metadata";
 import type { Workflow } from "./workflow";
@@ -15,7 +16,8 @@ declare global {
     growatt: Growatt;
     ui: Ui;
     checklist: Checklist;
-    child_tracker_table: ChildTrackerTable;
+    corrections_tracker: CorrectionsTracker;
+    child_tracker: ChildTrackerTable;
     metadata: Metadata;
     workflow: Workflow;
   };
