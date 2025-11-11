@@ -8,13 +8,13 @@ export interface ServiceProtocol {
     request_correction: WorkflowAction;
     reject: WorkflowAction;
     cancel: WorkflowAction;
-    finish_correction: WorkflowAction
-  }, // agt.doctype_namespace.service_protocol.workflow_action
+    finish_correction: WorkflowAction;
+  },
   workflow_state: {
     holding_action: WorkflowState;
     growatt_review: WorkflowState;
     finished: WorkflowState;
     rejected: WorkflowState;
     cancelled: WorkflowState;
-  } // agt.doctype_namespace.service_protocol.workflow_state
+  }
 }
