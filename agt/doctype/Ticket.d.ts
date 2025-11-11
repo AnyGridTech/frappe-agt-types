@@ -30,6 +30,8 @@ export interface Ticket extends FrappeDoc {
   main_eqp_has_smartmeter: number | undefined;
   main_eqp_has_smartenergy: number | undefined;
   main_eqp_has_batteries: number | undefined;
+  main_customer_email?: string;
+  main_eqp_item_code?: string;
   protocol_type:
   | "Warranty Inverter"
   | "Monitoring"
