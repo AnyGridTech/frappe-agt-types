@@ -29,14 +29,14 @@ export interface Dialog {
    */
   close_by_title: (title: string) => void;
 
-  /**
- * Shows an alert message for debugging purposes.
- * Only visible to users with specific roles (IT, Administrator, System Manager).
- * @param frm - The form instance to show the alert on.
- * @param message - The message to display in the alert.
- * @param indicator - The type of alert (e.g., 'green', 'red').
- * @param timeout - Optional timeout for the alert in seconds (default is 10).
- */
+    /**
+   * Shows an alert message for debugging purposes.
+   * Only visible to users with specific roles (IT, Administrator, System Manager).
+   * @param frm - The form instance to show the alert on.
+   * @param message - The message to display in the alert.
+   * @param indicator - The type of alert (e.g., 'green', 'red').
+   * @param timeout - Optional timeout for the alert in seconds (default is 10).
+   */
   show_debugger_alert: (frm: FrappeForm, message: string, indicator: string, timeout?: number) => void;
 
   /**
@@ -46,14 +46,4 @@ export interface Dialog {
    * The first dialog created will, eventually, be at the bottom of the stack.
    */
   refresh_dialog_stacking: () => void;
-
-
-  /**
-   * Updates/redraws the given dialog on the screen.
-   * Can be used to force a visual or state update of an existing `DialogInstance`,
-   * reflecting changes in fields, layout, or displayed data.
-   *
-   * @param dialog The dialog instance to be updated.
-   */
-  refresh: (dialog: DialogInstance) => void;
 }
