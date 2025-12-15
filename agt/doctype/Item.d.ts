@@ -11,6 +11,6 @@ export interface Item extends FrappeDoc {
   is_sales_item: boolean;
   valuation_rate?: number;
   default_warehouse?: string;
-  custom_equipament_type?: string;
-  custom_mppt?: string;
+  equipament_type?: string;
+  mppt?: string;
 }
