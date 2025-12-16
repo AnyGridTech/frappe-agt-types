@@ -1,6 +1,6 @@
 import type { Checklist } from "./doctype/checklist";
 import type { ComplianceStatement } from "./doctype/compliance_statement";
-import type { InitialAnalysis } from "./doctype/service_protocol";
+import type { InitialAnalysis } from "./doctype/initial_analysis";
 import type { Ticket } from "./doctype/ticket";
 
 export interface Metadata {
