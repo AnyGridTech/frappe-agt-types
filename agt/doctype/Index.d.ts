@@ -18,7 +18,7 @@ export type { PurchaseOrder } from "./PurchaseOrder";
 export type { SalesOrder } from "./SalesOrder";
 export type { SerialNo } from "./SerialNo";
 export type { SerialNoWorkflow } from "./SerialNoWorkflow";
-export type { InitialAnalysis } from "@anygridtech/frappe-agt-types/agt/doctype/InitialAnalysis";
+export type { InitialAnalysis } from "./InitialAnalysis";
 export type { StockEntry } from "./StockEntry";
 export type { Ticket } from "./Ticket";
 export type { Workflow } from "./Workflow";
