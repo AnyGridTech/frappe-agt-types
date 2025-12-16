@@ -2,7 +2,7 @@ import type { FrappeDoc } from "@anygridtech/frappe-types/client/frappe/core";
 import type { CorrectionsChildList } from "./CorrectionsChildList";
 import type { ChecklistTable } from "./ChecklistTable";
 
-export interface ServiceProtocol extends FrappeDoc {
+export interface InitialAnalysis extends FrappeDoc {
   client_list: string | undefined;
   distributor: string | undefined;
   priority: string | undefined;
