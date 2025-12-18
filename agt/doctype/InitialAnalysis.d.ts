@@ -48,7 +48,7 @@ export interface InitialAnalysis extends FrappeDoc {
   checklist_table_transformer?: ChecklistTable[];
   checklist_table_smart_meter?: ChecklistTable[];
   checklist_table_smart_energy_manager?: ChecklistTable[];
-  sp_docname?: string
+  inanly_docname?: string
   ticket_docname?: string
   // child_table?: string | string[];
   // child_table_name?: string | string[];
