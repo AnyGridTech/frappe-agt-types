@@ -56,18 +56,61 @@ With `@anygridtech/frappe-agt-types`, you get:
 
 Type definitions for AnyGrid Tech's custom modules, including:
 
-- **Custom DocTypes**:
+- **Custom DocTypes** (26 total):
   - `BrazilianInvoiceTaxes`
+  - `ChecklistBattery`
+  - `ChecklistEVCharger`
+  - `ChecklistInverter`
+  - `ChecklistSmartEnergyManager`
+  - `ChecklistSmartMeter`
   - `ChecklistTable`
+  - `ChecklistTracker`
+  - `ChecklistTransformer`
+  - `Company`
+  - `ComplianceStatement`
+  - `CorrectionsChildList`
   - `CorrectionsTracker`
+  - `ExternalIssueCode`
+  - `Index`
+  - `InitialAnalysis`
+  - `InvoiceTaxes`
+  - `IssueInverters`
+  - `Item`
+  - `PurchaseOrder`
+  - `SalesOrder`
+  - `SerialNo`
   - `SerialNoWorkflow`
-  - And more...
-- **Client-side `agt.client` namespace**:
-  - `agt.client.checklist`
-  - `agt.client.ui.ultra_dialog`
-  - `agt.client.utils.db`
-  - `agt.client.utils.doc`
-  - `agt.client.workflow`
+  - `StockEntry`
+  - `Ticket`
+  - `Workflow`
+
+- **Client-side `agt` namespace**:
+  - `agt.setup` – General setup utility
+  - `agt.checklist` – Checklist management
+    - `agt.checklist.table`
+  - `agt.corrections_tracker` – Corrections tracking
+    - `agt.corrections_tracker.run`
+    - `agt.corrections_tracker.table`
+  - `agt.growatt` – Growatt integrations
+  - `agt.metadata` – Metadata constants
+    - `agt.metadata.doctype.checklist`
+    - `agt.metadata.doctype.compliance_statement`
+    - `agt.metadata.doctype.initial_analysis`
+    - `agt.metadata.doctype.ticket`
+  - `agt.ui` – UI utilities
+    - `agt.ui.ultra_dialog`
+  - `agt.utils` – Utility functions
+    - `agt.utils.brazil`
+    - `agt.utils.core`
+    - `agt.utils.db`
+    - `agt.utils.dialog`
+    - `agt.utils.doc`
+    - `agt.utils.form`
+    - `agt.utils.table`
+    - `agt.utils.text`
+  - `agt.workflow` – Workflow utilities
+    - `agt.workflow.before_workflow_action`
+
 - **Server-side `agt.server` namespace**:
   - `agt.server.growatt_oss_api`
   - `agt.server.growatt_public_api`
