@@ -8,10 +8,12 @@ export interface Ticket {
     reject: WorkflowAction;
     cancel: WorkflowAction;
     reactive: WorkflowAction;
+    hold: WorkflowAction;
   } // agt.doctype_namespace.ticket.workflow_action
   workflow_state: {
     draft: WorkflowState;
     active: WorkflowState;
+    waiting_for_customer: WorkflowState;
     finished: WorkflowState;
     rejected: WorkflowState;
     cancelled: WorkflowState;
