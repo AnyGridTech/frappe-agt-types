@@ -3,15 +3,15 @@ import type { WorkflowState } from "../utils/workflow_state";
 
 export interface Ticket {
   workflow_action: {
-    request_revision: WorkflowAction;
     finish: WorkflowAction;
     reject: WorkflowAction;
+    hold: WorkflowAction;
+    reactivate: WorkflowAction;
     cancel: WorkflowAction;
-    approve_correction: WorkflowAction;
   },
   workflow_state: {
-    holding_action: WorkflowState;
-    growatt_review: WorkflowState;
+    active: WorkflowState;
+    waiting_for_customer: WorkflowState;
     finished: WorkflowState;
     rejected: WorkflowState;
     cancelled: WorkflowState;
