@@ -1,5 +1,5 @@
-import type { WorkflowAction } from "@anygridtech/frappe-agt-types/agt/client/metadata/utils/workflow_action";
-import type { WorkflowState } from "@anygridtech/frappe-agt-types/agt/client/metadata/utils/workflow_state";
+import type { WorkflowAction } from "../utils/workflow_action";
+import type { WorkflowState } from "../utils/workflow_state";
 
 export interface InitialAnalysis {
   workflow_action: {
