@@ -3,19 +3,17 @@ import type { WorkflowState } from "../utils/workflow_state";
 
 export interface Ticket {
   workflow_action: {
-    approve: WorkflowAction;
+    request_revision: WorkflowAction;
     finish: WorkflowAction;
     reject: WorkflowAction;
     cancel: WorkflowAction;
-    reactive: WorkflowAction;
-    hold: WorkflowAction;
-  } // agt.doctype_namespace.ticket.workflow_action
+    approve_correction: WorkflowAction;
+  },
   workflow_state: {
-    draft: WorkflowState;
-    active: WorkflowState;
-    waiting_for_customer: WorkflowState;
+    holding_action: WorkflowState;
+    growatt_review: WorkflowState;
     finished: WorkflowState;
     rejected: WorkflowState;
     cancelled: WorkflowState;
-  } // agt.doctype_namespace.ticket.workflow_state
+  }
 }
