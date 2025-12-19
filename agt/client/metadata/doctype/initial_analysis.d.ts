@@ -1,14 +1,13 @@
-import type { WorkflowAction } from "../utils/workflow_action";
-import type { WorkflowState } from "../utils/workflow_state";
+import type { WorkflowAction } from "@anygridtech/frappe-agt-types/agt/client/metadata/utils/workflow_action";
+import type { WorkflowState } from "@anygridtech/frappe-agt-types/agt/client/metadata/utils/workflow_state";
 
 export interface InitialAnalysis {
   workflow_action: {
     request_revision: WorkflowAction;
-    request_checklist: WorkflowAction;
-    request_correction: WorkflowAction;
+    finish: WorkflowAction;
     reject: WorkflowAction;
     cancel: WorkflowAction;
-    finish_correction: WorkflowAction;
+    approve: WorkflowAction;
   },
   workflow_state: {
     holding_action: WorkflowState;
