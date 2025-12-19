@@ -7,7 +7,7 @@ export interface InitialAnalysis {
     finish: WorkflowAction;
     reject: WorkflowAction;
     cancel: WorkflowAction;
-    approve: WorkflowAction;
+    approve_correction: WorkflowAction;
   },
   workflow_state: {
     holding_action: WorkflowState;
