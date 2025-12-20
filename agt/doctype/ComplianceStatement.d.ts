@@ -11,6 +11,7 @@ export interface ComplianceStatement extends FrappeDoc {
     ticket_docname?: string;
 
     // Agreement and terms
+    button_terms_and_conditions? string;
     check_agreement?: boolean;
     terms_and_conditions?: any;
 
@@ -27,7 +28,7 @@ export interface ComplianceStatement extends FrappeDoc {
     uf_of_note?: string;
 
     // Customer information
-    cust_taxid_type?: "Pessoa Física" | "Pessoa Jurídica";
+    cust_taxid_type?: "Individual" | "Legal Entity";
     cust_taxid?: string;
     cust_name?: string;
     cust_attachs?: Array<{
@@ -37,7 +38,7 @@ export interface ComplianceStatement extends FrappeDoc {
     cust_signature?: string;
 
     // Installation information
-    inst_taxid_type?: "Pessoa Física" | "Pessoa Jurídica";
+    inst_taxid_type?: "Individual" | "Legal Entity";
     inst_taxid?: string;
     inst_name?: string;
     inst_attachs?: Array<{
