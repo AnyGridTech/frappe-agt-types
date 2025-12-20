@@ -62,7 +62,7 @@ export interface ComplianceStatement extends FrappeDoc {
     delivery_city?: string;
     delivery_phone?: string;
     delivery_phone_alt?: string;
-    delivery_allow_pickup?: "Sim" | "Não" | "";
+    delivery_allow_pickup?: "Yes" | "No" | "";
 
     // Pickup information
     pickup_taxid_type?: string;
