@@ -11,7 +11,7 @@ export interface ComplianceStatement extends FrappeDoc {
     ticket_docname?: string;
 
     // Agreement and terms
-    button_terms_and_conditions? string;
+    button_terms_and_conditions?: string;
     check_agreement?: boolean;
     terms_and_conditions?: any;
 
