@@ -95,7 +95,7 @@ export interface UtilsExtendedFunctions {
    * Attach visual validation and input masking behavior for CPF/CNPJ fields.
    * Adds listeners to the specified field for real-time formatting and validation.
    */
-  document_id(frm: FrappeForm, docField: string, typeField?: string): Promise<void>;
+  document_id(frm: FrappeForm, docField: string, typeField?: string, nameField?: string): Promise<void>;
 
   /**
    * Build a friendly URL for a document in the app (e.g. /app/my-doctype/My%20Doc).
