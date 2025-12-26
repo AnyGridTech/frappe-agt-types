@@ -132,4 +132,3 @@ export interface UtilsExtendedFunctions {
    */
   get_value_from_any_doc(frm: any, doctype: string, docnameField: string, fieldName: string): Promise<any>;
 }
-
