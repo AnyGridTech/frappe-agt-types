@@ -38,6 +38,7 @@ export interface ComplianceStatement extends FrappeDoc {
     cust_signature?: string;
 
     // Installation information
+    check_allow_installer?: boolean;
     inst_taxid_type?: "Individual" | "Legal Entity";
     inst_taxid?: string;
     inst_name?: string;
