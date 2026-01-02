@@ -154,7 +154,7 @@ export interface UtilsExtendedFunctions {
    * 
    * @example
    * // Get battery info from Initial Analysis matching ticket_docname
-   * const has_battery = await agt.utils.get_related_doc_value(
+   * const has_battery = await agt.utils.get_target_field_by_field_match(
    *   form,
    *   'Initial Analysis',
    *   'ticket_docname',
@@ -164,7 +164,7 @@ export interface UtilsExtendedFunctions {
    * 
    * @example
    * // With custom default value and error on multiple matches
-   * const equipment_type = await agt.utils.get_related_doc_value(
+   * const equipment_type = await agt.utils.get_target_field_by_field_match(
    *   form,
    *   'Ticket',
    *   'ticket_docname',
@@ -178,7 +178,7 @@ export interface UtilsExtendedFunctions {
    * 
    * @example
    * // Get all matching values as array
-   * const checklist_names = await agt.utils.get_related_doc_value(
+   * const checklist_names = await agt.utils.get_target_field_by_field_match(
    *   form,
    *   'Checklist of Inverter',
    *   'ticket_docname',
@@ -187,7 +187,7 @@ export interface UtilsExtendedFunctions {
    *   { multiple_handler: 'all' }
    * );
    */
-  get_related_doc_value<T = any>(
+  get_target_field_by_field_match<T = any>(
     frm: any,
     target_doctype: string,
     match_field_source: string,
@@ -199,4 +199,3 @@ export interface UtilsExtendedFunctions {
     }
   ): Promise<T | T[] | null>;
 }
-
