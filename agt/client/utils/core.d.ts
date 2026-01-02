@@ -95,7 +95,7 @@ export interface UtilsExtendedFunctions {
    * Attach visual validation and input masking behavior for CPF/CNPJ fields.
    * Adds listeners to the specified field for real-time formatting and validation.
    */
-  document_id(frm: FrappeForm, docField: string, typeField?: string, nameField?: string): Promise<void>;
+  document_id(frm: FrappeForm, docField: string, typeField: string, nameField: string): Promise<void>;
 
   /**
    * Build a friendly URL for a document in the app (e.g. /app/my-doctype/My%20Doc).
@@ -131,4 +131,72 @@ export interface UtilsExtendedFunctions {
    * Returns `null` on error or if the field is not found.
    */
   get_value_from_any_doc(frm: any, doctype: string, docnameField: string, fieldName: string): Promise<any>;
+
+  /**
+   * Generic function to get a field value from a related doctype based on field matching.
+   * 
+   * This function allows you to retrieve data from related documents by correlating field values
+   * instead of requiring direct document name references. It searches for documents where a 
+   * specified field matches a value from the current document.
+   * 
+   * @param frm - Current form instance
+   * @param target_doctype - DocType where the search will be performed
+   * @param match_field_source - Field name in the current document to use for comparison
+   * @param match_field_target - Field name in the target doctype that should match the source value
+   * @param return_field - Field name in the target doctype whose value should be returned
+   * @param options - Optional configuration
+   * @param options.default_value - Value to return if no match is found (default: null)
+   * @param options.multiple_handler - How to handle multiple matches:
+   *   - 'first': Return the first match (default)
+   *   - 'error': Throw an error if multiple matches found
+   *   - 'all': Return an array of all matching values
+   * @returns The value of return_field from the matched document(s), or default_value if no match
+   * 
+   * @example
+   * // Get battery info from Initial Analysis matching ticket_docname
+   * const has_battery = await agt.utils.get_related_doc_value(
+   *   form,
+   *   'Initial Analysis',
+   *   'ticket_docname',
+   *   'ticket_docname',
+   *   'main_eqp_has_battery'
+   * );
+   * 
+   * @example
+   * // With custom default value and error on multiple matches
+   * const equipment_type = await agt.utils.get_related_doc_value(
+   *   form,
+   *   'Ticket',
+   *   'ticket_docname',
+   *   'name',
+   *   'main_eqp_type',
+   *   { 
+   *     default_value: 'UNKNOWN',
+   *     multiple_handler: 'error'
+   *   }
+   * );
+   * 
+   * @example
+   * // Get all matching values as array
+   * const checklist_names = await agt.utils.get_related_doc_value(
+   *   form,
+   *   'Checklist of Inverter',
+   *   'ticket_docname',
+   *   'ticket_docname',
+   *   'name',
+   *   { multiple_handler: 'all' }
+   * );
+   */
+  get_related_doc_value<T = any>(
+    frm: any,
+    target_doctype: string,
+    match_field_source: string,
+    match_field_target: string,
+    return_field: string,
+    options?: {
+      default_value?: T;
+      multiple_handler?: 'first' | 'error' | 'all';
+    }
+  ): Promise<T | T[] | null>;
 }
+
