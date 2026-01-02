@@ -2,6 +2,7 @@ export type { BrazilianInvoiceTaxes } from "./BrazilianInvoiceTaxes";
 export type { ChecklistBattery } from "./ChecklistBattery";
 export type { ChecklistEVCharger } from "./ChecklistEVCharger";
 export type { ChecklistInverter } from "./ChecklistInverter";
+export type { ChecklistDatalogger } from "./ChecklistDatalogger";
 export type { ChecklistSmartEnergyManager } from "./ChecklistSmartEnergyManager";
 export type { ChecklistSmartMeter } from "./ChecklistSmartMeter";
 export type { ChecklistTable } from "./ChecklistTable";
