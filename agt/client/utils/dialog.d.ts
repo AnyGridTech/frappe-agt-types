@@ -46,4 +46,68 @@ export interface Dialog {
    * The first dialog created will, eventually, be at the bottom of the stack.
    */
   refresh_dialog_stacking: () => void;
+
+  /**
+   * Shows a non-dismissible loading modal with a spinner.
+   * Useful for blocking user interaction during critical operations.
+   * 
+   * @param title - The title of the modal
+   * @param message - The message to display
+   * @returns The dialog instance
+   * 
+   * @example
+   * const loadingModal = agt.utils.dialog.show_loading_modal(
+   *   'Processing',
+   *   'Please wait while we process your request...'
+   * );
+   * // ... perform operation ...
+   * loadingModal.hide();
+   */
+  show_loading_modal: (title: string, message: string) => DialogInstance;
+
+  /**
+   * Shows a confirmation modal with primary and secondary actions.
+   * Automatically prevents duplicate modals with the same title.
+   * 
+   * @param title - The title of the modal
+   * @param message - The message to display
+   * @param primaryLabel - Label for the primary action button
+   * @param secondaryLabel - Label for the secondary action button
+   * @param onPrimary - Callback function for primary action
+   * @param onSecondary - Optional callback function for secondary action
+   * @returns The dialog instance or undefined if a duplicate modal is prevented
+   * 
+   * @example
+   * agt.utils.dialog.show_confirmation_modal(
+   *   'Confirm Action',
+   *   'Are you sure you want to proceed?',
+   *   'Yes, Continue',
+   *   'No, Cancel',
+   *   async () => {
+   *     console.log('User confirmed');
+   *     // perform action
+   *   }
+   * );
+   */
+  show_confirmation_modal: (
+    title: string,
+    message: string,
+    primaryLabel: string,
+    secondaryLabel: string,
+    onPrimary: () => void | Promise<void>,
+    onSecondary?: () => void | Promise<void>
+  ) => DialogInstance | undefined;
+
+  /**
+   * Creates a beforeunload handler to prevent browser tab close during critical operations.
+   * Returns a function to remove the handler when no longer needed.
+   * 
+   * @returns Function to remove the beforeunload handler
+   * 
+   * @example
+   * const removeHandler = agt.utils.dialog.prevent_tab_close();
+   * // ... perform critical operation ...
+   * removeHandler(); // Allow tab close again
+   */
+  prevent_tab_close: () => () => void;
 }
