@@ -1,113 +1,202 @@
-import { DialogInstance, DialogConfiguration } from "@anygridtech/frappe-types/client/frappe/ui/Dialog";
 import { FrappeForm } from "@anygridtech/frappe-types/client/frappe/core";
 
-export interface Dialog {
+/**
+ * Represents the custom utilities module in Frappe.
+ */
+export interface UtilsExtendedFunctions {
   /**
-   * Stores all created dialog instances using `load_dialog` method.
-   * Can be used to access or manipulate the dialog after its creation.
-   */
-  created: DialogInstance[];
-
-  /**
-   * Creates and displays a dialog using the specified configuration.
-   * Stores the dialog instance in the `createdDialog` variable for future use.
+   * Handles workflow transitions for a form.
+   * Executes the specified action and triggers related workflow events (`before_workflow_action`, `after_workflow_action`).
    * 
-   * @param diagConfig - The configuration for the dialog (e.g., title, fields, actions).
-   * @returns The created `DialogInstance`.
+   * @param form - The form to apply the workflow action on.
+   * @param action - The workflow action to execute.
+   * @param callback - (Optional) A callback function to execute after the workflow action is completed.
+   * @returns A promise resolving to void.
    */
-  load: (diagConfig: DialogConfiguration) => DialogInstance;
+  workflow_transition: (
+    form: FrappeForm,
+    action: string,
+    callback?: (f: FrappeForm) => void | Promise<void>
+  ) => Promise<void>; // agt.utils.workflow_transition
 
   /**
-   * Closes all open dialogs created using the `load_dialog` method.
+   * Updates the workflow state for a document.
+   * Differently from `workflow_transition`, this method directly sets the workflow state without executing actions.
+   * @tip Use this method when you need to set the workflow state without triggering actions.
+   * @tip This method does validate the workflow state transition. But can be turned off by setting `ignore_workflow_validation` to `true`.
+   * @param doctype - The name of the DocType.
+   * @param docname - The name of the document to update.
+   * @param workflow_state - The new workflow state to set.
+   * @param ignore_workflow_validation - Whether to ignore workflow state validation.
+   * @param callback - (Optional) A callback function to execute after the workflow state is updated.
+   * @returns A promise resolving to the document fields as a dict.
    */
-  close_all: () => void;
+  update_workflow_state: <T>(params: {
+    doctype: string;
+    docname: string;
+    workflow_state: string;
+    ignore_workflow_validation?: boolean;
+    callback?: () => Promise<void>;
+  }) => Promise<T | undefined>; // agt.utils.update_workflow_state
 
   /**
-   * Closes a dialog with a specific title.
+   * Displays a message to the user and redirects to a URL after a specified delay.
    * 
-   * @param title - The title of the dialog to close.
+   * @param ref - The document reference (required for validation)
+   * @param title - Title of the displayed message
+   * @param message - Content of the displayed message
+   * @param indicator - Color of the indicator (blue, green, red, etc.)
+   * @param url - URL to redirect to
+   * @param delay - Wait time in ms before redirection (default: 3000ms)
+   * @param newTab - Whether to open in a new tab (default: true)
    */
-  close_by_title: (title: string) => void;
-
-    /**
-   * Shows an alert message for debugging purposes.
-   * Only visible to users with specific roles (IT, Administrator, System Manager).
-   * @param frm - The form instance to show the alert on.
-   * @param message - The message to display in the alert.
-   * @param indicator - The type of alert (e.g., 'green', 'red').
-   * @param timeout - Optional timeout for the alert in seconds (default is 10).
-   */
-  show_debugger_alert: (frm: FrappeForm, message: string, indicator: string, timeout?: number) => void;
+  redirect_by_ref(ref?: string, title?: string, message?: string, indicator?: string, url?: string, delay?: number, newTab?: boolean): void; // agt.utils.redirect_by_ref
 
   /**
-   * 
-   * This function will reshuffle the dialogs in the screen.
-   * It should make the last dialog created appear on top of the stack of dialogs.
-   * The first dialog created will, eventually, be at the bottom of the stack.
+   * Force-refresh the current document (`cur_frm`).
+   * Clears the cached version of the document and fetches an updated copy via `agt.utils.doc.get_doc`.
+   * Returns the reloaded document or `undefined` if `cur_frm` is missing or an error occurs.
    */
-  refresh_dialog_stacking: () => void;
+  refresh_force(): Promise<any | undefined>;
 
   /**
-   * Shows a non-dismissible loading modal with a spinner.
-   * Useful for blocking user interaction during critical operations.
+   * Quick regex check for a formatted CPF string (e.g. 000.000.000-00).
+   */
+  validate_cpf_regex(cpf: string): boolean;
+
+  /**
+   * Quick regex check for a formatted CNPJ string (e.g. 00.000.000/0000-00).
+   */
+  validate_cnpj_regex(cnpj: string): boolean;
+
+  /**
+   * Full CPF validation including verification digits.
+   */
+  validate_cpf(cpf: string): boolean;
+
+  /**
+   * Full CNPJ validation including verification digits.
+   */
+  validate_cnpj(cnpj: string): boolean;
+
+  /**
+   * Check CNPJ existence via a remote service (uses `frappe.call`).
+   * Returns `true` if the CNPJ exists and matches the provided value, `false` otherwise.
+   */
+  validate_cnpj_existence(cnpj: string): Promise<boolean>;
+
+  /**
+   * Format a document string (CPF/CNPJ) according to the provided type or
+   * by inferring the format from the number of digits when type is omitted.
+   */
+  format_doc(doc: string, type?: string): string;
+
+  /**
+   * Attach visual validation and input masking behavior for CPF/CNPJ fields.
+   * Adds listeners to the specified field for real-time formatting and validation.
+   */
+  document_id(frm: FrappeForm, docField: string, typeField: string, nameField: string): Promise<void>;
+
+  /**
+   * Build a friendly URL for a document in the app (e.g. /app/my-doctype/My%20Doc).
+   */
+  build_doc_url(doctype: string, docname: string): string;
+
+  /**
+   * Show a message and redirect after creating or identifying a document.
+   * Used to guide the user after creation or when the document already exists.
+   */
+  redirect_after_create_doc(success: boolean, url: string, docname: string, doctype: string): void;
+
+  /**
+   * Retrieve item information by name (and optional serial). If multiple
+   * items share the same name but different MPPT values, show a dialog to select one.
+   */
+  get_item_info(item_name: string, sn?: string): Promise<any | undefined>;
+
+  /**
+   * Retrieve Growatt serial information via server-side call (`frappe.call`).
+   * Returns the SN data or `undefined` when not found or on error.
+   */
+  get_growatt_sn_info(serial_no: string): Promise<any | undefined>;
+
+  /**
+   * Validate serial numbers with rules that depend on the equipment type.
+   * Accepted types: 'inverter' | 'battery' | 'ev_charger' | 'transformer' | 'smart_meter' | 'smart_energy_manager' | 'other'
+   */
+  validate_serial_number(sn: string, type?: 'inverter' | 'battery' | 'ev_charger' | 'transformer' | 'smart_meter' | 'smart_energy_manager' | 'other'): boolean;
+
+  /**
+   * Retrieve the value of a field from any document (`doctype`) referenced in the form.
+   * Returns `null` on error or if the field is not found.
+   */
+  get_value_from_any_doc(frm: any, doctype: string, docnameField: string, fieldName: string): Promise<any>;
+
+  /**
+   * Generic function to get a field value from a related doctype based on field matching.
    * 
-   * @param title - The title of the modal
-   * @param message - The message to display
-   * @returns The dialog instance
+   * This function allows you to retrieve data from related documents by correlating field values
+   * instead of requiring direct document name references. It searches for documents where a 
+   * specified field matches a value from the current document.
+   * 
+   * @param frm - Current form instance
+   * @param target_doctype - DocType where the search will be performed
+   * @param match_field_source - Field name in the current document to use for comparison
+   * @param match_field_target - Field name in the target doctype that should match the source value
+   * @param return_field - Field name in the target doctype whose value should be returned
+   * @param options - Optional configuration
+   * @param options.default_value - Value to return if no match is found (default: null)
+   * @param options.multiple_handler - How to handle multiple matches:
+   *   - 'first': Return the first match (default)
+   *   - 'error': Throw an error if multiple matches found
+   *   - 'all': Return an array of all matching values
+   * @returns The value of return_field from the matched document(s), or default_value if no match
    * 
    * @example
-   * const loadingModal = agt.utils.dialog.show_loading_modal(
-   *   'Processing',
-   *   'Please wait while we process your request...'
+   * // Get battery info from Initial Analysis matching ticket_docname
+   * const has_battery = await agt.utils.get_target_field_by_field_match(
+   *   form,
+   *   'Initial Analysis',
+   *   'ticket_docname',
+   *   'ticket_docname',
+   *   'main_eqp_has_battery'
    * );
-   * // ... perform operation ...
-   * loadingModal.hide();
-   */
-  show_loading_modal: (title: string, message: string) => DialogInstance;
-
-  /**
-   * Shows a confirmation modal with primary and secondary actions.
-   * Automatically prevents duplicate modals with the same title.
-   * 
-   * @param title - The title of the modal
-   * @param message - The message to display
-   * @param primaryLabel - Label for the primary action button
-   * @param secondaryLabel - Label for the secondary action button
-   * @param onPrimary - Callback function for primary action
-   * @param onSecondary - Optional callback function for secondary action
-   * @returns The dialog instance or undefined if a duplicate modal is prevented
    * 
    * @example
-   * agt.utils.dialog.show_confirmation_modal(
-   *   'Confirm Action',
-   *   'Are you sure you want to proceed?',
-   *   'Yes, Continue',
-   *   'No, Cancel',
-   *   async () => {
-   *     console.log('User confirmed');
-   *     // perform action
+   * // With custom default value and error on multiple matches
+   * const equipment_type = await agt.utils.get_target_field_by_field_match(
+   *   form,
+   *   'Ticket',
+   *   'ticket_docname',
+   *   'name',
+   *   'main_eqp_type',
+   *   { 
+   *     default_value: 'UNKNOWN',
+   *     multiple_handler: 'error'
    *   }
    * );
-   */
-  show_confirmation_modal: (
-    title: string,
-    message: string,
-    primaryLabel: string,
-    secondaryLabel: string,
-    onPrimary: () => void | Promise<void>,
-    onSecondary?: () => void | Promise<void>
-  ) => DialogInstance | undefined;
-
-  /**
-   * Creates a beforeunload handler to prevent browser tab close during critical operations.
-   * Returns a function to remove the handler when no longer needed.
-   * 
-   * @returns Function to remove the beforeunload handler
    * 
    * @example
-   * const removeHandler = agt.utils.dialog.prevent_tab_close();
-   * // ... perform critical operation ...
-   * removeHandler(); // Allow tab close again
+   * // Get all matching values as array
+   * const checklist_names = await agt.utils.get_target_field_by_field_match(
+   *   form,
+   *   'Checklist of Inverter',
+   *   'ticket_docname',
+   *   'ticket_docname',
+   *   'name',
+   *   { multiple_handler: 'all' }
+   * );
    */
-  prevent_tab_close: () => () => void;
+  get_target_field_by_field_match<T = any>(
+    frm: any,
+    target_doctype: string,
+    match_field_source: string,
+    match_field_target: string,
+    return_field: string,
+    options?: {
+      default_value?: T;
+      multiple_handler?: 'first' | 'error' | 'all';
+    }
+  ): Promise<T | T[] | null>;
 }
+
